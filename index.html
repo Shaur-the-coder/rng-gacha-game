@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNG Gacha Game</title>
+    <meta name="description" content="Roll for rare items in this exciting RNG gacha game!">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles.css?v=21">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Legendary Chat Sidebar -->
+        <aside class="legendary-chat-sidebar" id="legendaryChat">
+            <div class="chat-header">
+                <span class="chat-icon">👑</span>
+                <h2 class="chat-title">Legendary Log</h2>
+                <button class="toggle-chat-btn" id="toggleChatBtn" title="Toggle Chat">
+                    <span>◀</span>
+                </button>
+            </div>
+
+            <div class="chat-content">
+                <!-- Global Drops Section -->
+                <div class="legendary-announcements">
+                    <h3 class="section-title">
+                        <span class="title-icon">🌟</span>
+                        Global Drops
+                    </h3>
+                    <div class="announcements-list" id="globalDropsList">
+                        <div class="empty-announcements">
+                            <span class="empty-emoji">🎰</span>
+                            <p>No rare drops yet!</p>
+                            <span class="empty-hint">Waiting for legendary/mythic pulls...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-messages-section">
+                    <h3 class="section-title">
+                        <span class="title-icon">💬</span>
+                        Chat
+                    </h3>
+                    <div class="messages-list" id="messagesList">
+                        <div class="system-message">
+                            <span class="message-icon">🤖</span>
+                            <span class="message-text">Welcome! Share your legendary pulls!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trading Section -->
+                <div class="trading-section">
+                    <h3 class="section-title">
+                        <span class="title-icon">🤝</span>
+                        Trading
+                    </h3>
+                    <div class="online-players-list" id="onlinePlayersList">
+                        <div class="no-players">
+                            <span class="no-players-icon">👥</span>
+                            <p>No other players online</p>
+                            <span class="no-players-hint">Open another tab to trade!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input-wrapper">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type a message..." maxlength="200">
+                <button class="chat-send-btn" id="chatSendBtn">
+                    <span>➤</span>
+                </button>
+            </div>
+        </aside>
+
+        <div class="container">
+            <header class="header">
+                <!-- User Badge -->
+                <div class="user-badge" id="userBadge">
+                    <span class="user-avatar">👤</span>
+                    <span class="user-name" id="displayUsername">Player</span>
+                    <span class="online-indicator"></span>
+                </div>
+                <h1 class="title">✨ RNG GACHA ✨</h1>
+                <p class="subtitle">Roll your luck and collect rare items!</p>
+
+                <!-- Currency Display -->
+                <div class="currency-bar">
+                    <div class="currency gems">
+                        <span class="currency-icon">💎</span>
+                        <span class="currency-value" id="gemsDisplay">0</span>
+                        <span class="currency-label">Gems</span>
+                    </div>
+                    <div class="currency coins">
+                        <span class="currency-icon">🪙</span>
+                        <span class="currency-value" id="coinsDisplay">0</span>
+                        <span class="currency-label">Coins</span>
+                    </div>
+                    <button class="totem-bag-btn" id="openTotemInventory">
+                        🗿 My Totems
+                        <span class="totem-count" id="totemCount">0</span>
+                    </button>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <!-- Roll Section -->
+                <section class="roll-section">
+                    <div class="roll-display">
+                        <div class="roll-frame" id="rollFrame">
+                            <div class="item-card" id="resultCard">
+                                <div class="item-image card-back" id="resultImage">
+                                    <div class="card-back-placeholder">?</div>
+                                </div>
+                                <div class="item-name" id="resultName"></div>
+                                <div class="item-rarity" id="resultRarity"></div>
+                            </div>
+                        </div>
+                        <div class="roll-glow" id="rollGlow"></div>
+                    </div>
+
+                    <div class="roll-buttons">
+                        <button class="roll-button" id="rollButton">
+                            <span class="roll-text">🎲 ROLL</span>
+                            <span class="roll-cost">FREE</span>
+                        </button>
+                        <button class="roll-button lucky-roll" id="luckyRollButton">
+                            <span class="roll-text">🍀 LUCKY ROLL</span>
+                            <span class="roll-cost">50 🪙</span>
+                        </button>
+                    </div>
+
+                    <!-- Boosts Section -->
+                    <div class="boosts-section">
+                        <div class="boost-status" id="boostStatus">
+                            <span class="boost-icon">🍀</span>
+                            <span class="boost-text">No active boosts</span>
+                        </div>
+                        <div class="boost-buttons">
+                            <button class="boost-btn" id="luckBoostBtn">
+                                <span class="boost-name">🍀 Luck Boost</span>
+                                <span class="boost-info">10 min • 50 🪙</span>
+                            </button>
+                            <button class="boost-btn auto-roll" id="autoRollBtn">
+                                <span class="boost-name">⚡ Auto Roll</span>
+                                <span class="boost-info">450 🪙</span>
+                            </button>
+                        </div>
+
+                        <!-- Auto Sell Settings -->
+                        <div class="auto-sell-section">
+                            <div class="auto-sell-header">
+                                <span class="auto-sell-icon">💰</span>
+                                <span class="auto-sell-title">Auto Sell</span>
+                            </div>
+                            <div class="auto-sell-toggles">
+                                <label class="rarity-toggle common">
+                                    <input type="checkbox" id="autoSellCommon">
+                                    <span class="toggle-label">Common</span>
+                                </label>
+                                <label class="rarity-toggle uncommon">
+                                    <input type="checkbox" id="autoSellUncommon">
+                                    <span class="toggle-label">Uncommon</span>
+                                </label>
+                                <label class="rarity-toggle rare">
+                                    <input type="checkbox" id="autoSellRare">
+                                    <span class="toggle-label">Rare</span>
+                                </label>
+                                <label class="rarity-toggle epic">
+                                    <input type="checkbox" id="autoSellEpic">
+                                    <span class="toggle-label">Epic</span>
+                                </label>
+                                <label class="rarity-toggle legendary">
+                                    <input type="checkbox" id="autoSellLegendary">
+                                    <span class="toggle-label">Legendary</span>
+                                </label>
+                                <label class="rarity-toggle mythic">
+                                    <input type="checkbox" id="autoSellMythic">
+                                    <span class="toggle-label">Mythic</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-label">Total Rolls</span>
+                            <span class="stat-value" id="totalRolls">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Unique Items</span>
+                            <span class="stat-value" id="uniqueItems">0/50</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Inventory Section -->
+                <section class="inventory-section">
+                    <div class="inventory-header">
+                        <h2 class="inventory-title">📦 INVENTORY</h2>
+                        <button class="bulk-sell-btn" id="openBulkSell">🛒 Sell Specific</button>
+                    </div>
+                    <p class="inventory-hint">Click an item to sell it!</p>
+                    <div class="rarity-filter">
+                        <button class="filter-btn active" data-rarity="all">All</button>
+                        <button class="filter-btn" data-rarity="common">Common</button>
+                        <button class="filter-btn" data-rarity="uncommon">Uncommon</button>
+                        <button class="filter-btn" data-rarity="rare">Rare</button>
+                        <button class="filter-btn" data-rarity="epic">Epic</button>
+                        <button class="filter-btn" data-rarity="legendary">Legendary</button>
+                        <button class="filter-btn" data-rarity="mythic">Mythic</button>
+                    </div>
+                    <div class="inventory-grid" id="inventoryGrid">
+                        <!-- Items will be populated by JS -->
+                    </div>
+                </section>
+
+                <!-- Creator Code Section -->
+                <section class="code-section">
+                    <h2 class="code-title">🎁 CREATOR CODE</h2>
+                    <p class="code-hint">Enter a code to claim rewards!</p>
+                    <div class="code-input-wrapper">
+                        <input type="text" id="codeInput" placeholder="Enter code..." class="code-input">
+                        <button class="code-btn" id="redeemCodeBtn">Redeem</button>
+                    </div>
+                    <p class="code-message" id="codeMessage"></p>
+                </section>
+
+                <!-- Totem Shop Section -->
+                <section class="shop-section">
+                    <h2 class="shop-title">🗿 TOTEM SHOP</h2>
+                    <p class="shop-hint">Buy powerful totems to boost your luck!</p>
+                    <div class="shop-grid" id="shopGrid">
+                        <!-- Shop items will be populated by JS -->
+                    </div>
+                </section>
+
+                <!-- Gem Shop Section -->
+                <section class="gem-shop-section">
+                    <h2 class="gem-shop-title">💎 GEM SHOP</h2>
+                    <p class="gem-shop-hint">Spend your gems on powerful upgrades!</p>
+
+                    <!-- Gem Exchange -->
+                    <div class="gem-shop-category">
+                        <h3 class="category-title">🔄 Gem Exchange</h3>
+                        <div class="exchange-grid">
+                            <div class="exchange-card" data-gems="1000" data-coins="10">
+                                <span class="exchange-give">1,000 💎</span>
+                                <span class="exchange-arrow">→</span>
+                                <span class="exchange-get">10 🪙</span>
+                                <button class="exchange-btn" id="exchange1k">Exchange</button>
+                            </div>
+                            <div class="exchange-card" data-gems="10000" data-coins="120">
+                                <span class="exchange-give">10,000 💎</span>
+                                <span class="exchange-arrow">→</span>
+                                <span class="exchange-get">120 🪙</span>
+                                <span class="exchange-bonus">+20% bonus!</span>
+                                <button class="exchange-btn" id="exchange10k">Exchange</button>
+                            </div>
+                            <div class="exchange-card" data-gems="100000" data-coins="1500">
+                                <span class="exchange-give">100,000 💎</span>
+                                <span class="exchange-arrow">→</span>
+                                <span class="exchange-get">1,500 🪙</span>
+                                <span class="exchange-bonus">+50% bonus!</span>
+                                <button class="exchange-btn" id="exchange100k">Exchange</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guaranteed Rolls -->
+                    <div class="gem-shop-category">
+                        <h3 class="category-title">🎯 Guaranteed Rolls</h3>
+                        <div class="guaranteed-grid">
+                            <div class="guaranteed-card rare-card">
+                                <div class="guaranteed-icon">💙</div>
+                                <div class="guaranteed-info">
+                                    <span class="guaranteed-name">Rare Roll</span>
+                                    <span class="guaranteed-desc">Guaranteed Rare or better!</span>
+                                </div>
+                                <div class="guaranteed-footer">
+                                    <span class="guaranteed-cost">5,000 💎</span>
+                                    <button class="guaranteed-btn" id="guaranteedRare">Roll</button>
+                                </div>
+                            </div>
+                            <div class="guaranteed-card epic-card">
+                                <div class="guaranteed-icon">💜</div>
+                                <div class="guaranteed-info">
+                                    <span class="guaranteed-name">Epic Roll</span>
+                                    <span class="guaranteed-desc">Guaranteed Epic or better!</span>
+                                </div>
+                                <div class="guaranteed-footer">
+                                    <span class="guaranteed-cost">50,000 💎</span>
+                                    <button class="guaranteed-btn" id="guaranteedEpic">Roll</button>
+                                </div>
+                            </div>
+                            <div class="guaranteed-card legendary-card">
+                                <div class="guaranteed-icon">💛</div>
+                                <div class="guaranteed-info">
+                                    <span class="guaranteed-name">Legendary Roll</span>
+                                    <span class="guaranteed-desc">Guaranteed Legendary or better!</span>
+                                </div>
+                                <div class="guaranteed-footer">
+                                    <span class="guaranteed-cost">2,000,000 💎</span>
+                                    <button class="guaranteed-btn" id="guaranteedLegendary">Roll</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Permanent Upgrades -->
+                    <div class="gem-shop-category">
+                        <h3 class="category-title">⬆️ Permanent Upgrades</h3>
+                        <div class="upgrades-grid">
+                            <div class="upgrade-card">
+                                <div class="upgrade-icon">🍀</div>
+                                <div class="upgrade-info">
+                                    <span class="upgrade-name">Lucky Aura</span>
+                                    <span class="upgrade-desc">+1% Legendary drop rate (permanent)</span>
+                                    <span class="upgrade-level">Level: <span id="luckyAuraLevel">0</span>/10</span>
+                                </div>
+                                <div class="upgrade-footer">
+                                    <span class="upgrade-cost" id="luckyAuraCost">100,000 💎</span>
+                                    <button class="upgrade-btn" id="buyLuckyAura">Buy</button>
+                                </div>
+                            </div>
+                            <div class="upgrade-card">
+                                <div class="upgrade-icon">⚡</div>
+                                <div class="upgrade-info">
+                                    <span class="upgrade-name">Quick Hands</span>
+                                    <span class="upgrade-desc">Auto-roll 0.5s faster per level</span>
+                                    <span class="upgrade-level">Level: <span id="quickHandsLevel">0</span>/5</span>
+                                </div>
+                                <div class="upgrade-footer">
+                                    <span class="upgrade-cost" id="quickHandsCost">250,000 💎</span>
+                                    <button class="upgrade-btn" id="buyQuickHands">Buy</button>
+                                </div>
+                            </div>
+                            <div class="upgrade-card">
+                                <div class="upgrade-icon">💰</div>
+                                <div class="upgrade-info">
+                                    <span class="upgrade-name">Coin Magnet</span>
+                                    <span class="upgrade-desc">+25% coins from selling (permanent)</span>
+                                    <span class="upgrade-level">Level: <span id="coinMagnetLevel">0</span>/4</span>
+                                </div>
+                                <div class="upgrade-footer">
+                                    <span class="upgrade-cost" id="coinMagnetCost">500,000 💎</span>
+                                    <button class="upgrade-btn" id="buyCoinMagnet">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Global Events Section -->
+                <section class="global-events-section">
+                    <h2 class="events-title">🌍 GLOBAL EVENTS</h2>
+                    <p class="events-hint">Trigger server-wide effects for ALL players!</p>
+                    <div class="global-event-status" id="globalEventStatus"></div>
+                    <div class="events-grid">
+                        <div class="event-card mythic-event">
+                            <div class="event-icon">✨</div>
+                            <div class="event-info">
+                                <h3 class="event-name">MYTHIC LUCK</h3>
+                                <p class="event-desc">Everyone gets ONLY mythic pulls for 10 seconds!</p>
+                            </div>
+                            <div class="event-footer">
+                                <span class="event-cost">45,000,000 💎</span>
+                                <button class="event-buy-btn" id="buyMythicLuck">ACTIVATE</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer/Mascot Section -->
+            <footer class="footer-section">
+                <div class="mascot-container">
+                    <img src="mascot.png" alt="Mascot" class="mascot-image" id="mascotImage">
+                </div>
+                <p class="footer-text">FILLER TEXT</p>
+            </footer>
+        </div>
+
+        <!-- Username Modal -->
+        <div class="modal-overlay username-modal" id="usernameModal">
+            <div class="modal username-modal-content">
+                <div class="username-modal-icon">🎮</div>
+                <h3 class="modal-title">Welcome, Adventurer!</h3>
+                <p class="username-modal-subtitle">Choose your username to begin</p>
+                <div class="username-input-wrapper">
+                    <input type="text" id="usernameInput" class="username-input" placeholder="Enter username..."
+                        maxlength="16" autocomplete="off">
+                    <span class="username-char-count"><span id="usernameCharCount">0</span>/16</span>
+                </div>
+                <button class="username-submit-btn" id="usernameSubmitBtn" disabled>
+                    <span>Start Playing</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+                <p class="username-hint">Username must be 3-16 characters</p>
+            </div>
+        </div>
+
+        <!-- Trade Request Modal -->
+        <div class="modal-overlay" id="tradeRequestModal">
+            <div class="modal trade-request-modal">
+                <div class="trade-request-icon">🤝</div>
+                <h3 class="modal-title">Trade Request</h3>
+                <p class="trade-request-text"><span id="tradeRequestFrom">Player</span> wants to trade with you!</p>
+                <div class="modal-buttons">
+                    <button class="modal-btn cancel" id="declineTradeBtn">Decline</button>
+                    <button class="modal-btn confirm" id="acceptTradeBtn">Accept</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trade Window Modal -->
+        <div class="modal-overlay" id="tradeWindowModal">
+            <div class="modal trade-window-modal">
+                <h3 class="modal-title">Trading with <span id="tradingWithName">Player</span></h3>
+                <div class="trade-panels">
+                    <div class="trade-panel your-offer">
+                        <h4 class="trade-panel-title">Your Offer</h4>
+                        <div class="trade-items-grid" id="yourOfferGrid"></div>
+                        <div class="trade-panel-hint">Click your items below to add</div>
+                    </div>
+                    <div class="trade-divider">
+                        <span>⇄</span>
+                    </div>
+                    <div class="trade-panel their-offer">
+                        <h4 class="trade-panel-title">Their Offer</h4>
+                        <div class="trade-items-grid" id="theirOfferGrid"></div>
+                        <div class="trade-panel-hint">Waiting for items...</div>
+                    </div>
+                </div>
+                <div class="your-inventory-section">
+                    <h4 class="trade-section-title">Your Inventory</h4>
+                    <div class="trade-inventory-grid" id="tradeInventoryGrid"></div>
+                </div>
+                <div class="trade-status" id="tradeStatus">
+                    <span class="status-icon">⏳</span>
+                    <span class="status-text">Waiting for both players to confirm...</span>
+                </div>
+                <div class="modal-buttons trade-buttons">
+                    <button class="modal-btn cancel" id="cancelTradeBtn">Cancel Trade</button>
+                    <button class="modal-btn confirm" id="confirmTradeBtn">Confirm Trade</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sell Modal -->
+        <div class="modal-overlay" id="sellModal">
+            <div class="modal">
+                <h3 class="modal-title">Sell Item</h3>
+                <div class="modal-item">
+                    <span class="modal-emoji" id="modalEmoji">🪨</span>
+                    <span class="modal-name" id="modalName">Stone</span>
+                    <span class="modal-rarity" id="modalRarity">common</span>
+                </div>
+                <div class="modal-rewards">
+                    <div class="reward">
+                        <span class="reward-icon">💎</span>
+                        <span class="reward-value" id="modalGems">10</span>
+                    </div>
+                    <div class="reward">
+                        <span class="reward-icon">🪙</span>
+                        <span class="reward-value" id="modalCoins">1</span>
+                    </div>
+                </div>
+                <div class="modal-count">
+                    <label>Quantity:</label>
+                    <input type="number" id="sellQuantity" min="1" value="1">
+                    <span id="maxQuantity">/ 1</span>
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-btn cancel" id="cancelSell">Cancel</button>
+                    <button class="modal-btn confirm" id="confirmSell">Sell</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Totem Inventory Modal -->
+        <div class="modal-overlay" id="totemInventoryModal">
+            <div class="modal totem-inventory-modal">
+                <h3 class="modal-title">🗿 My Totems</h3>
+                <p class="totem-active-boost" id="activeTotemBoost"></p>
+                <div class="totem-inventory-grid" id="totemInventoryGrid">
+                    <!-- Totems will be populated by JS -->
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-btn cancel" id="closeTotemInventory">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bulk Sell Modal -->
+        <div class="modal-overlay" id="bulkSellModal">
+            <div class="modal bulk-sell-modal">
+                <h3 class="modal-title">🛒 Sell Specific Items</h3>
+                <p class="bulk-sell-hint">Select items to sell. Click items to toggle selection.</p>
+                <div class="bulk-sell-summary" id="bulkSellSummary">
+                    <span>Selected: 0 items</span>
+                    <span>Value: 0 💎 + 0 🪙</span>
+                </div>
+                <div class="bulk-sell-grid" id="bulkSellGrid">
+                    <!-- Items will be populated by JS -->
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-btn cancel" id="closeBulkSell">Cancel</button>
+                    <button class="modal-btn confirm" id="confirmBulkSell">Sell Selected</button>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- End page-wrapper -->
+
+    <!-- How to Play Button -->
+    <button class="how-to-play-btn" id="howToPlayBtn">
+        <span class="htp-icon">❓</span>
+        <span class="htp-text">How to Play</span>
+    </button>
+
+    <!-- How to Play Modal -->
+    <div class="modal-overlay" id="howToPlayModal" style="display: none;">
+        <div class="how-to-play-modal">
+            <button class="close-modal-btn" id="closeHowToPlay">✕</button>
+            <h2 class="htp-title">🎲 How to Play RNG Gacha</h2>
+
+            <div class="htp-sections">
+                <div class="htp-section">
+                    <h3>🎰 Rolling</h3>
+                    <ul>
+                        <li><strong>Roll</strong> - Free roll to get random items</li>
+                        <li><strong>Lucky Roll</strong> - Costs 50 🪙, better odds!</li>
+                        <li>Rarer items = More gems when sold</li>
+                    </ul>
+                </div>
+
+                <div class="htp-section">
+                    <h3>💎 Rarities</h3>
+                    <ul>
+                        <li><span class="rarity-tag common">Common</span> - 50% chance, 10 💎</li>
+                        <li><span class="rarity-tag uncommon">Uncommon</span> - 25% chance, 100 💎</li>
+                        <li><span class="rarity-tag rare">Rare</span> - 15% chance, 1K 💎</li>
+                        <li><span class="rarity-tag epic">Epic</span> - 7% chance, 100K 💎</li>
+                        <li><span class="rarity-tag legendary">Legendary</span> - 3% chance, 500K+ 💎</li>
+                        <li><span class="rarity-tag mythic">Mythic</span> - 0.1% chance, 10M 💎</li>
+                    </ul>
+                </div>
+
+                <div class="htp-section">
+                    <h3>💰 Economy</h3>
+                    <ul>
+                        <li><strong>💎 Gems</strong> - Get from selling items, use in Gem Shop</li>
+                        <li><strong>🪙 Coins</strong> - Get from selling, use for boosts</li>
+                        <li><strong>Gem Shop</strong> - Exchange gems, guaranteed rolls, upgrades</li>
+                    </ul>
+                </div>
+
+                <div class="htp-section">
+                    <h3>⚡ Boosts & Features</h3>
+                    <ul>
+                        <li><strong>Luck Boost</strong> - 50 🪙 for 10min better odds</li>
+                        <li><strong>Auto Roll</strong> - 450 🪙 for automatic rolling</li>
+                        <li><strong>Totems</strong> - Buy with gems for luck boosts</li>
+                        <li><strong>Auto-Sell</strong> - Automatically sell unwanted rarities</li>
+                    </ul>
+                </div>
+
+                <div class="htp-section">
+                    <h3>🌍 Multiplayer</h3>
+                    <ul>
+                        <li><strong>Trading</strong> - Trade items with online players</li>
+                        <li><strong>3D World</strong> - Explore with WASD, chat with others</li>
+                        <li><strong>Global Events</strong> - Trigger Mythic Luck for everyone!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button class="htp-close-btn" id="closeHowToPlayBtn">Got it!</button>
+        </div>
+    </div>
+
+    <!-- Multiplayer Button -->
+    <a href="multiplayer.html" class="multiplayer-btn" id="multiplayerBtn" target="_blank">
+        <span class="mp-icon">🌍</span>
+        <span class="mp-text">Multiplayer</span>
+    </a>
+
+    <script src="vfx.js?v=1"></script>
+    <script src="script.js?v=5"></script>
+</body>
+
+</html>
