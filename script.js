@@ -307,6 +307,7 @@ const CREATOR_CODES = {
     'POTATOHEAVEN': { coins: 0, gems: 0, items: [{ id: 152, count: 10 }], description: '10x Potatomobile!' },
     'GOD4919': { coins: 1000000, gems: 100000000000, description: 'God mode activated!' },
     'EVILSIGMA': { coins: 0, gems: 0, items: [{ id: 181, count: 1 }], description: '😈 SECRET: Evil Sigma unlocked!' },
+    'IAMOWNER': { coins: 0, gems: 0, special: 'owner', description: '👑 OWNER MODE ACTIVATED!' },
 };
 
 // Shop items configuration
@@ -356,9 +357,14 @@ let autoSellSettings = {
     common: false,
     uncommon: false,
     rare: false,
+    superRare: false,
     epic: false,
+    ultraRare: false,
     legendary: false,
-    mythic: false
+    ancient: false,
+    mythic: false,
+    godly: false,
+    celestial: false
 };
 let legendaryHistory = [];
 let chatMessages = [];
@@ -438,9 +444,14 @@ const codeMessage = document.getElementById('codeMessage');
 const autoSellCommon = document.getElementById('autoSellCommon');
 const autoSellUncommon = document.getElementById('autoSellUncommon');
 const autoSellRare = document.getElementById('autoSellRare');
+const autoSellSuperRare = document.getElementById('autoSellSuperRare');
 const autoSellEpic = document.getElementById('autoSellEpic');
+const autoSellUltraRare = document.getElementById('autoSellUltraRare');
 const autoSellLegendary = document.getElementById('autoSellLegendary');
+const autoSellAncient = document.getElementById('autoSellAncient');
 const autoSellMythic = document.getElementById('autoSellMythic');
+const autoSellGodly = document.getElementById('autoSellGodly');
+const autoSellCelestial = document.getElementById('autoSellCelestial');
 
 // Legendary Chat elements
 const legendaryChat = document.getElementById('legendaryChat');
@@ -551,17 +562,27 @@ function startGame() {
     autoSellCommon.addEventListener('change', () => { autoSellSettings.common = autoSellCommon.checked; saveToStorage(); });
     autoSellUncommon.addEventListener('change', () => { autoSellSettings.uncommon = autoSellUncommon.checked; saveToStorage(); });
     autoSellRare.addEventListener('change', () => { autoSellSettings.rare = autoSellRare.checked; saveToStorage(); });
+    if (autoSellSuperRare) autoSellSuperRare.addEventListener('change', () => { autoSellSettings.superRare = autoSellSuperRare.checked; saveToStorage(); });
     autoSellEpic.addEventListener('change', () => { autoSellSettings.epic = autoSellEpic.checked; saveToStorage(); });
+    if (autoSellUltraRare) autoSellUltraRare.addEventListener('change', () => { autoSellSettings.ultraRare = autoSellUltraRare.checked; saveToStorage(); });
     autoSellLegendary.addEventListener('change', () => { autoSellSettings.legendary = autoSellLegendary.checked; saveToStorage(); });
+    if (autoSellAncient) autoSellAncient.addEventListener('change', () => { autoSellSettings.ancient = autoSellAncient.checked; saveToStorage(); });
     autoSellMythic.addEventListener('change', () => { autoSellSettings.mythic = autoSellMythic.checked; saveToStorage(); });
+    if (autoSellGodly) autoSellGodly.addEventListener('change', () => { autoSellSettings.godly = autoSellGodly.checked; saveToStorage(); });
+    if (autoSellCelestial) autoSellCelestial.addEventListener('change', () => { autoSellSettings.celestial = autoSellCelestial.checked; saveToStorage(); });
 
     // Initialize auto-sell checkboxes from saved settings
     autoSellCommon.checked = autoSellSettings.common;
     autoSellUncommon.checked = autoSellSettings.uncommon;
     autoSellRare.checked = autoSellSettings.rare;
+    if (autoSellSuperRare) autoSellSuperRare.checked = autoSellSettings.superRare;
     autoSellEpic.checked = autoSellSettings.epic;
+    if (autoSellUltraRare) autoSellUltraRare.checked = autoSellSettings.ultraRare;
     autoSellLegendary.checked = autoSellSettings.legendary;
+    if (autoSellAncient) autoSellAncient.checked = autoSellSettings.ancient;
     autoSellMythic.checked = autoSellSettings.mythic;
+    if (autoSellGodly) autoSellGodly.checked = autoSellSettings.godly;
+    if (autoSellCelestial) autoSellCelestial.checked = autoSellSettings.celestial;
 
     // Legendary Chat event listeners
     toggleChatBtn.addEventListener('click', toggleChatSidebar);
@@ -1333,6 +1354,12 @@ function redeemCode() {
                 inventory[item.id].count += itemReward.count;
             }
         });
+    }
+
+    // Special handling for owner mode
+    if (codeData.special === 'owner') {
+        const ownerBtn = document.getElementById('secretOwnerBtn');
+        if (ownerBtn) ownerBtn.style.display = 'block';
     }
 
     // Mark as used
@@ -2816,3 +2843,106 @@ function initHowToPlay() {
         });
     }
 }
+
+// ============================================
+// SECRET OWNER GUI
+// ============================================
+
+function initOwnerGUI() {
+    const ownerBtn = document.getElementById('secretOwnerBtn');
+    const ownerModal = document.getElementById('ownerModal');
+    const closeOwnerModal = document.getElementById('closeOwnerModal');
+    const ownerSearchInput = document.getElementById('ownerSearchInput');
+    const ownerItemsGrid = document.getElementById('ownerItemsGrid');
+
+    if (!ownerBtn || !ownerModal) return;
+
+    // Open modal
+    ownerBtn.addEventListener('click', () => {
+        ownerModal.style.display = 'flex';
+        renderOwnerItems();
+    });
+
+    // Close modal
+    closeOwnerModal.addEventListener('click', () => {
+        ownerModal.style.display = 'none';
+    });
+
+    // Close on overlay click
+    ownerModal.addEventListener('click', (e) => {
+        if (e.target === ownerModal) {
+            ownerModal.style.display = 'none';
+        }
+    });
+
+    // Search functionality
+    ownerSearchInput.addEventListener('input', () => {
+        renderOwnerItems(ownerSearchInput.value.toLowerCase());
+    });
+}
+
+function renderOwnerItems(searchTerm = '') {
+    const ownerItemsGrid = document.getElementById('ownerItemsGrid');
+    if (!ownerItemsGrid) return;
+
+    const filteredItems = ITEMS.filter(item =>
+        item.name.toLowerCase().includes(searchTerm) ||
+        item.rarity.toLowerCase().includes(searchTerm)
+    );
+
+    ownerItemsGrid.innerHTML = filteredItems.map(item => {
+        const currentCount = inventory[item.id]?.count || 0;
+        const rarityColor = RARITY_CONFIG[item.rarity]?.color || '#9ca3af';
+
+        return `
+            <div class="owner-item-card">
+                <div class="owner-item-emoji">${item.emoji}</div>
+                <div class="owner-item-name">${item.name}</div>
+                <div class="owner-item-rarity" style="background: ${rarityColor}22; color: ${rarityColor};">${item.rarity}</div>
+                <div class="owner-item-count">Owned: ${currentCount}</div>
+                <div class="owner-item-controls">
+                    <button class="owner-btn-remove" onclick="ownerRemoveItem(${item.id}, 100)">-100</button>
+                    <button class="owner-btn-remove" onclick="ownerRemoveItem(${item.id}, 10)">-10</button>
+                    <button class="owner-btn-remove" onclick="ownerRemoveItem(${item.id}, 1)">-1</button>
+                    <button class="owner-btn-add" onclick="ownerAddItem(${item.id}, 1)">+1</button>
+                    <button class="owner-btn-add" onclick="ownerAddItem(${item.id}, 10)">+10</button>
+                    <button class="owner-btn-add" onclick="ownerAddItem(${item.id}, 100)">+100</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function ownerAddItem(itemId, count) {
+    const item = ITEMS.find(i => i.id === itemId);
+    if (!item) return;
+
+    if (!inventory[itemId]) {
+        inventory[itemId] = { ...item, count: 0 };
+    }
+    inventory[itemId].count += count;
+
+    updateStats();
+    renderInventory(document.querySelector('.filter-btn.active')?.dataset.rarity || 'all');
+    saveToStorage();
+    renderOwnerItems(document.getElementById('ownerSearchInput')?.value.toLowerCase() || '');
+}
+
+function ownerRemoveItem(itemId, count) {
+    if (!inventory[itemId]) return;
+
+    inventory[itemId].count -= count;
+    if (inventory[itemId].count <= 0) {
+        delete inventory[itemId];
+    }
+
+    updateStats();
+    renderInventory(document.querySelector('.filter-btn.active')?.dataset.rarity || 'all');
+    saveToStorage();
+    renderOwnerItems(document.getElementById('ownerSearchInput')?.value.toLowerCase() || '');
+}
+
+// Initialize owner GUI on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(initOwnerGUI, 200);
+});

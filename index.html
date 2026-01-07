@@ -7,7 +7,7 @@
     <title>RNG Gacha Game</title>
     <meta name="description" content="Roll for rare items in this exciting RNG gacha game!">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="styles.css?v=50">
+    <link rel="stylesheet" href="styles.css?v=52">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
@@ -182,17 +182,37 @@
                                     <input type="checkbox" id="autoSellRare">
                                     <span class="toggle-label">Rare</span>
                                 </label>
+                                <label class="rarity-toggle superRare">
+                                    <input type="checkbox" id="autoSellSuperRare">
+                                    <span class="toggle-label">Super Rare</span>
+                                </label>
                                 <label class="rarity-toggle epic">
                                     <input type="checkbox" id="autoSellEpic">
                                     <span class="toggle-label">Epic</span>
+                                </label>
+                                <label class="rarity-toggle ultraRare">
+                                    <input type="checkbox" id="autoSellUltraRare">
+                                    <span class="toggle-label">Ultra Rare</span>
                                 </label>
                                 <label class="rarity-toggle legendary">
                                     <input type="checkbox" id="autoSellLegendary">
                                     <span class="toggle-label">Legendary</span>
                                 </label>
+                                <label class="rarity-toggle ancient">
+                                    <input type="checkbox" id="autoSellAncient">
+                                    <span class="toggle-label">Ancient</span>
+                                </label>
                                 <label class="rarity-toggle mythic">
                                     <input type="checkbox" id="autoSellMythic">
                                     <span class="toggle-label">Mythic</span>
+                                </label>
+                                <label class="rarity-toggle godly">
+                                    <input type="checkbox" id="autoSellGodly">
+                                    <span class="toggle-label">Godly</span>
+                                </label>
+                                <label class="rarity-toggle celestial">
+                                    <input type="checkbox" id="autoSellCelestial">
+                                    <span class="toggle-label">Celestial</span>
                                 </label>
                             </div>
                         </div>
@@ -605,6 +625,27 @@
         </div>
     </div>
 
+    <!-- Secret Owner Button (hidden by default) -->
+    <button class="secret-owner-btn" id="secretOwnerBtn" style="display: none;">
+        👑 GET SPECIFIC
+    </button>
+
+    <!-- Secret Owner Modal -->
+    <div class="modal-overlay" id="ownerModal" style="display: none;">
+        <div class="owner-modal-content">
+            <div class="owner-modal-header">
+                <h2>👑 GET SPECIFIC</h2>
+                <button class="owner-close-btn" id="closeOwnerModal">✕</button>
+            </div>
+            <div class="owner-search">
+                <input type="text" id="ownerSearchInput" placeholder="Search items...">
+            </div>
+            <div class="owner-items-grid" id="ownerItemsGrid">
+                <!-- Items will be populated by JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- Multiplayer Button -->
     <a href="multiplayer.html" class="multiplayer-btn" id="multiplayerBtn" target="_blank">
         <span class="mp-icon">🌍</span>
@@ -612,7 +653,7 @@
     </a>
 
     <script src="vfx.js?v=1"></script>
-    <script src="script.js?v=50"></script>
+    <script src="script.js?v=52"></script>
 </body>
 
 </html>
