@@ -176,6 +176,282 @@ body::before {
     box-shadow: 0 0 50px rgba(239, 68, 68, 0.8), 0 0 100px rgba(239, 68, 68, 0.5);
 }
 
+/* Ultra Rare glow buildup */
+.roll-frame.ultraRare-glow-buildup .item-card {
+    animation: cardSpinUltraRare 1.5s ease-in-out, ultraRareGlowBuildup 1.5s ease-in-out;
+}
+
+.roll-frame.ultraRare-glow-buildup {
+    animation: screenShakeUltraRare 0.12s ease-in-out infinite;
+}
+
+@keyframes screenShakeUltraRare {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-2px, 1px);
+    }
+
+    75% {
+        transform: translate(2px, -1px);
+    }
+}
+
+@keyframes cardSpinUltraRare {
+    0% {
+        transform: rotateY(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateY(360deg) scale(1.1);
+    }
+
+    100% {
+        transform: rotateY(720deg) scale(1);
+    }
+}
+
+@keyframes ultraRareGlowBuildup {
+    0% {
+        box-shadow: 0 0 5px rgba(236, 72, 153, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 80px rgba(236, 72, 153, 0.8);
+    }
+}
+
+/* Ancient glow buildup */
+.roll-frame.ancient-glow-buildup .item-card {
+    animation: cardSpinAncient 2.5s ease-in-out, ancientGlowBuildup 2.5s ease-in-out;
+}
+
+.roll-frame.ancient-glow-buildup {
+    animation: screenShakeAncient 0.18s ease-in-out infinite;
+}
+
+@keyframes screenShakeAncient {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-3px, 2px);
+    }
+
+    75% {
+        transform: translate(3px, -2px);
+    }
+}
+
+@keyframes cardSpinAncient {
+    0% {
+        transform: rotateY(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateY(540deg) scale(1.15);
+    }
+
+    100% {
+        transform: rotateY(1080deg) scale(1);
+    }
+}
+
+@keyframes ancientGlowBuildup {
+    0% {
+        box-shadow: 0 0 5px rgba(120, 53, 15, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 100px rgba(251, 191, 36, 0.9);
+    }
+}
+
+/* Godly glow buildup */
+.roll-frame.godly-glow-buildup .item-card {
+    animation: cardSpinGodly 4.5s ease-in-out, godlyGlowBuildup 4.5s ease-in-out;
+}
+
+.roll-frame.godly-glow-buildup {
+    animation: screenShakeGodly 0.25s ease-in-out infinite;
+}
+
+@keyframes screenShakeGodly {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-4px, 2px);
+    }
+
+    50% {
+        transform: translate(0, -3px);
+    }
+
+    75% {
+        transform: translate(4px, 2px);
+    }
+}
+
+@keyframes cardSpinGodly {
+    0% {
+        transform: rotateY(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateY(720deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotateY(1440deg) scale(1);
+    }
+}
+
+@keyframes godlyGlowBuildup {
+    0% {
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 80px rgba(251, 191, 36, 0.7);
+    }
+
+    100% {
+        box-shadow: 0 0 150px rgba(251, 191, 36, 1);
+    }
+}
+
+/* Celestial glow buildup */
+.roll-frame.celestial-glow-buildup .item-card {
+    animation: cardSpinCelestial 6s ease-in-out, celestialGlowBuildup 6s ease-in-out;
+}
+
+.roll-frame.celestial-glow-buildup {
+    animation: screenShakeCelestial 0.3s ease-in-out infinite;
+}
+
+@keyframes screenShakeCelestial {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(-5px, 3px) rotate(-1deg);
+    }
+
+    50% {
+        transform: translate(0, -4px) rotate(0deg);
+    }
+
+    75% {
+        transform: translate(5px, 3px) rotate(1deg);
+    }
+}
+
+@keyframes cardSpinCelestial {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotateY(900deg) rotateX(180deg) scale(1.25);
+    }
+
+    100% {
+        transform: rotateY(1800deg) rotateX(360deg) scale(1);
+    }
+}
+
+@keyframes celestialGlowBuildup {
+    0% {
+        box-shadow: 0 0 10px rgba(224, 242, 254, 0.3);
+    }
+
+    33% {
+        box-shadow: 0 0 60px rgba(186, 230, 253, 0.6);
+    }
+
+    66% {
+        box-shadow: 0 0 120px rgba(125, 211, 252, 0.8);
+    }
+
+    100% {
+        box-shadow: 0 0 200px rgba(224, 242, 254, 1);
+    }
+}
+
+/* Secret glow buildup */
+.roll-frame.secret-glow-buildup .item-card {
+    animation: cardSpinSecret 5s ease-in-out, secretGlowBuildup 5s ease-in-out;
+}
+
+.roll-frame.secret-glow-buildup {
+    animation: screenShakeSecret 0.2s ease-in-out infinite;
+}
+
+@keyframes screenShakeSecret {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-3px, 2px);
+    }
+
+    50% {
+        transform: translate(2px, -2px);
+    }
+
+    75% {
+        transform: translate(-2px, -1px);
+    }
+}
+
+@keyframes cardSpinSecret {
+    0% {
+        transform: rotateY(0deg) scale(1);
+        filter: brightness(1);
+    }
+
+    50% {
+        transform: rotateY(540deg) scale(1.2);
+        filter: brightness(0.5);
+    }
+
+    100% {
+        transform: rotateY(1080deg) scale(1);
+        filter: brightness(1);
+    }
+}
+
+@keyframes secretGlowBuildup {
+    0% {
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(239, 68, 68, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 150px rgba(239, 68, 68, 0.8), 0 0 80px rgba(0, 0, 0, 1);
+    }
+}
+
 @keyframes cardSpinLegendary {
     0% {
         transform: rotateY(0deg) scale(1);
@@ -1880,6 +2156,103 @@ body::before {
 .inventory-item.mythic {
     border-color: var(--mythic);
     animation: mythicPulse 1.5s ease-in-out infinite;
+}
+
+.inventory-item.superRare {
+    border-color: var(--superRare);
+    box-shadow: 0 0 15px rgba(20, 184, 166, 0.4);
+}
+
+.inventory-item.ultraRare {
+    border-color: var(--ultraRare);
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+    animation: ultraRarePulse 2s ease-in-out infinite;
+}
+
+.inventory-item.ancient {
+    border-color: var(--ancient);
+    box-shadow: 0 0 25px rgba(120, 53, 15, 0.6);
+    animation: ancientPulse 2.5s ease-in-out infinite;
+}
+
+.inventory-item.godly {
+    border-color: var(--godly);
+    box-shadow: 0 0 35px rgba(251, 191, 36, 0.7);
+    animation: godlyPulse 1.5s ease-in-out infinite;
+}
+
+.inventory-item.celestial {
+    border-color: var(--celestial);
+    box-shadow: 0 0 40px rgba(186, 230, 253, 0.8);
+    animation: celestialPulse 2s ease-in-out infinite;
+}
+
+.inventory-item.secret {
+    border-color: var(--secret);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: secretPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ultraRarePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 35px rgba(236, 72, 153, 0.8);
+    }
+}
+
+@keyframes ancientPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 25px rgba(120, 53, 15, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(251, 191, 36, 0.7);
+    }
+}
+
+@keyframes godlyPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 35px rgba(251, 191, 36, 0.7);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 50px rgba(251, 191, 36, 1);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes celestialPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 40px rgba(186, 230, 253, 0.8);
+    }
+
+    50% {
+        box-shadow: 0 0 60px rgba(224, 242, 254, 1);
+    }
+}
+
+@keyframes secretPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 30px rgba(239, 68, 68, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 45px rgba(239, 68, 68, 0.9), inset 0 0 30px rgba(0, 0, 0, 0.7);
+    }
 }
 
 /* Empty state */
@@ -5037,7 +5410,7 @@ body::before {
     font-size: 0.95rem;
     font-weight: 700;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 9999;
     transition: all 0.3s ease;
     box-shadow: 0 5px 20px rgba(251, 191, 36, 0.3);
 }
@@ -5058,6 +5431,16 @@ body::before {
     overflow-y: auto;
     border: 2px solid #fbbf24;
     box-shadow: 0 0 50px rgba(251, 191, 36, 0.3);
+}
+
+#ownerModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
 }
 
 .owner-modal-header {

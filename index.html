@@ -7,7 +7,7 @@
     <title>RNG Gacha Game</title>
     <meta name="description" content="Roll for rare items in this exciting RNG gacha game!">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="styles.css?v=52">
+    <link rel="stylesheet" href="styles.css?v=58">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
@@ -626,7 +626,7 @@
     </div>
 
     <!-- Secret Owner Button (hidden by default) -->
-    <button class="secret-owner-btn" id="secretOwnerBtn" style="display: none;">
+    <button class="secret-owner-btn" id="secretOwnerBtn" style="display: none;" onclick="openOwnerModal()">
         👑 GET SPECIFIC
     </button>
 
@@ -635,7 +635,7 @@
         <div class="owner-modal-content">
             <div class="owner-modal-header">
                 <h2>👑 GET SPECIFIC</h2>
-                <button class="owner-close-btn" id="closeOwnerModal">✕</button>
+                <button class="owner-close-btn" id="closeOwnerModal" onclick="closeOwnerModalFunc()">✕</button>
             </div>
             <div class="owner-search">
                 <input type="text" id="ownerSearchInput" placeholder="Search items...">
@@ -653,7 +653,7 @@
     </a>
 
     <script src="vfx.js?v=1"></script>
-    <script src="script.js?v=52"></script>
+    <script src="script.js?v=58"></script>
 </body>
 
 </html>

@@ -161,6 +161,20 @@ const ITEMS = [
     { id: 130, name: "Cursed Coin", emoji: "🪙", rarity: "rare" },
 
     // ========================================
+    // SUPER RARE (10 items) - 10% chance - 10,000 gems, 8 coins
+    // ========================================
+    { id: 153, name: "Starfall Blade", emoji: "🌠", rarity: "superRare" },
+    { id: 154, name: "Ocean Heart", emoji: "🌊", rarity: "superRare" },
+    { id: 155, name: "Storm Caller", emoji: "⛈️", rarity: "superRare" },
+    { id: 156, name: "Earth Shaker", emoji: "🌋", rarity: "superRare" },
+    { id: 157, name: "Wind Walker", emoji: "🌬️", rarity: "superRare" },
+    { id: 158, name: "Flame Dancer", emoji: "💃", rarity: "superRare" },
+    { id: 159, name: "Ice Weaver", emoji: "🧊", rarity: "superRare" },
+    { id: 160, name: "Shadow Step", emoji: "🦶", rarity: "superRare" },
+    { id: 161, name: "Light Bringer", emoji: "💡", rarity: "superRare" },
+    { id: 162, name: "Void Touched", emoji: "🕳️", rarity: "superRare" },
+
+    // ========================================
     // EPIC (15 items) - 7% chance - 100,000 gems, 10 coins
     // ========================================
     { id: 131, name: "Void Essence", emoji: "🌀", rarity: "epic" },
@@ -180,35 +194,6 @@ const ITEMS = [
     { id: 145, name: "Cosmic Dust", emoji: "🌌", rarity: "epic" },
 
     // ========================================
-    // LEGENDARY (5 items) - 3% chance - 500,000 - 1,000,000 gems, 25 coins
-    // ========================================
-    { id: 146, name: "Infinity Stone", emoji: "💎", rarity: "legendary", gemValue: 500000 },
-    { id: 147, name: "World Ender", emoji: "🌟", rarity: "legendary", gemValue: 1000000 },
-    { id: 148, name: "Reality Warper", emoji: "🌀", rarity: "legendary", gemValue: 750000 },
-    { id: 149, name: "Omni Crown", emoji: "👑", rarity: "legendary", gemValue: 850000 },
-    { id: 150, name: "Eternal Flame", emoji: "🔥", rarity: "legendary", gemValue: 950000 },
-
-    // ========================================
-    // MYTHIC (2 items) - 0.1% chance - 10,000,000 gems, 100 coins
-    // ========================================
-    { id: 151, name: "Planetary Bread", emoji: "🍞", image: "planetary_bread.png", rarity: "mythic", gemValue: 10000000 },
-    { id: 152, name: "Potatomobile", emoji: "🥔", image: "potatomobile.png", rarity: "mythic", gemValue: 10000000 },
-
-    // ========================================
-    // SUPER RARE (10 items) - 10% chance - 10,000 gems, 8 coins
-    // ========================================
-    { id: 153, name: "Starfall Blade", emoji: "🌠", rarity: "superRare" },
-    { id: 154, name: "Ocean Heart", emoji: "🌊", rarity: "superRare" },
-    { id: 155, name: "Storm Caller", emoji: "⛈️", rarity: "superRare" },
-    { id: 156, name: "Earth Shaker", emoji: "🌋", rarity: "superRare" },
-    { id: 157, name: "Wind Walker", emoji: "🌬️", rarity: "superRare" },
-    { id: 158, name: "Flame Dancer", emoji: "💃", rarity: "superRare" },
-    { id: 159, name: "Ice Weaver", emoji: "🧊", rarity: "superRare" },
-    { id: 160, name: "Shadow Step", emoji: "🦶", rarity: "superRare" },
-    { id: 161, name: "Light Bringer", emoji: "💡", rarity: "superRare" },
-    { id: 162, name: "Void Touched", emoji: "🕳️", rarity: "superRare" },
-
-    // ========================================
     // ULTRA RARE (8 items) - 5% chance - 250,000 gems, 15 coins
     // ========================================
     { id: 163, name: "Dragonfire Orb", emoji: "🐲", rarity: "ultraRare" },
@@ -221,6 +206,15 @@ const ITEMS = [
     { id: 170, name: "Pharaoh's Curse", emoji: "🏺", rarity: "ultraRare" },
 
     // ========================================
+    // LEGENDARY (5 items) - 3% chance - 500,000 - 1,000,000 gems, 25 coins
+    // ========================================
+    { id: 146, name: "Infinity Stone", emoji: "💎", rarity: "legendary", gemValue: 500000 },
+    { id: 147, name: "World Ender", emoji: "🌟", rarity: "legendary", gemValue: 1000000 },
+    { id: 148, name: "Reality Warper", emoji: "🌀", rarity: "legendary", gemValue: 750000 },
+    { id: 149, name: "Omni Crown", emoji: "👑", rarity: "legendary", gemValue: 850000 },
+    { id: 150, name: "Eternal Flame", emoji: "🔥", rarity: "legendary", gemValue: 950000 },
+
+    // ========================================
     // ANCIENT (5 items) - 1% chance - 2,000,000 gems, 50 coins
     // ========================================
     { id: 171, name: "Primordial Egg", emoji: "🥚", rarity: "ancient" },
@@ -228,6 +222,12 @@ const ITEMS = [
     { id: 173, name: "Last Darkness", emoji: "🌑", rarity: "ancient" },
     { id: 174, name: "Time's Origin", emoji: "⌛", rarity: "ancient" },
     { id: 175, name: "Creation Seed", emoji: "🌱", rarity: "ancient" },
+
+    // ========================================
+    // MYTHIC (2 items) - 0.1% chance - 10,000,000 gems, 100 coins
+    // ========================================
+    { id: 151, name: "Planetary Bread", emoji: "🍞", image: "planetary_bread.png", rarity: "mythic", gemValue: 10000000 },
+    { id: 152, name: "Potatomobile", emoji: "🥔", image: "potatomobile.png", rarity: "mythic", gemValue: 10000000 },
 
     // ========================================
     // GODLY (3 items) - 0.01% chance - 100,000,000 gems, 500 coins
@@ -353,6 +353,7 @@ let autoRollActive = false;
 let autoRollOwned = false;
 let autoRollInterval = null;
 let usedCodes = [];
+let isOwner = false;
 let autoSellSettings = {
     common: false,
     uncommon: false,
@@ -724,14 +725,34 @@ async function roll(isLucky = false) {
     let glowBuildupDuration = 0;
     let glowClass = '';
 
-    if (result.rarity === 'legendary') {
+    if (result.rarity === 'ultraRare') {
+        spinDuration = 1500;
+        glowBuildupDuration = 1000;
+        glowClass = 'ultraRare-glow-buildup';
+    } else if (result.rarity === 'legendary') {
         spinDuration = 2000; // Slower roll for legendary
         glowBuildupDuration = 1500;
         glowClass = 'legendary-glow-buildup';
+    } else if (result.rarity === 'ancient') {
+        spinDuration = 2500;
+        glowBuildupDuration = 1800;
+        glowClass = 'ancient-glow-buildup';
     } else if (result.rarity === 'mythic') {
         spinDuration = 3500; // Even slower for mythic
         glowBuildupDuration = 2500;
         glowClass = 'mythic-glow-buildup';
+    } else if (result.rarity === 'godly') {
+        spinDuration = 4500;
+        glowBuildupDuration = 3500;
+        glowClass = 'godly-glow-buildup';
+    } else if (result.rarity === 'celestial') {
+        spinDuration = 6000;
+        glowBuildupDuration = 4500;
+        glowClass = 'celestial-glow-buildup';
+    } else if (result.rarity === 'secret') {
+        spinDuration = 5000;
+        glowBuildupDuration = 4000;
+        glowClass = 'secret-glow-buildup';
     }
 
     // Clear previous result styling and glow
@@ -1329,6 +1350,16 @@ function redeemCode() {
     }
 
     if (usedCodes.includes(code)) {
+        // Allow IAMOWNER to be reused for owner mode activation
+        if (code === 'IAMOWNER') {
+            isOwner = true;
+            localStorage.setItem('rng_isOwner', 'true');
+            const ownerBtn = document.getElementById('secretOwnerBtn');
+            if (ownerBtn) ownerBtn.style.display = 'block';
+            showCodeMessage('👑 OWNER MODE ACTIVATED!', true);
+            codeInput.value = '';
+            return;
+        }
         showCodeMessage('You already used this code!', false);
         return;
     }
@@ -1358,6 +1389,8 @@ function redeemCode() {
 
     // Special handling for owner mode
     if (codeData.special === 'owner') {
+        isOwner = true;
+        localStorage.setItem('rng_isOwner', 'true');
         const ownerBtn = document.getElementById('secretOwnerBtn');
         if (ownerBtn) ownerBtn.style.display = 'block';
     }
@@ -2609,14 +2642,34 @@ async function performRollWithItem(result) {
     let glowBuildupDuration = 0;
     let glowClass = '';
 
-    if (result.rarity === 'legendary') {
+    if (result.rarity === 'ultraRare') {
+        spinDuration = 1500;
+        glowBuildupDuration = 1000;
+        glowClass = 'ultraRare-glow-buildup';
+    } else if (result.rarity === 'legendary') {
         spinDuration = 2000;
         glowBuildupDuration = 1500;
         glowClass = 'legendary-glow-buildup';
+    } else if (result.rarity === 'ancient') {
+        spinDuration = 2500;
+        glowBuildupDuration = 1800;
+        glowClass = 'ancient-glow-buildup';
     } else if (result.rarity === 'mythic') {
         spinDuration = 3500;
         glowBuildupDuration = 2500;
         glowClass = 'mythic-glow-buildup';
+    } else if (result.rarity === 'godly') {
+        spinDuration = 4500;
+        glowBuildupDuration = 3500;
+        glowClass = 'godly-glow-buildup';
+    } else if (result.rarity === 'celestial') {
+        spinDuration = 6000;
+        glowBuildupDuration = 4500;
+        glowClass = 'celestial-glow-buildup';
+    } else if (result.rarity === 'secret') {
+        spinDuration = 5000;
+        glowBuildupDuration = 4000;
+        glowClass = 'secret-glow-buildup';
     }
 
     rollFrame.className = 'roll-frame rolling';
@@ -2848,6 +2901,23 @@ function initHowToPlay() {
 // SECRET OWNER GUI
 // ============================================
 
+function openOwnerModal() {
+    const ownerModal = document.getElementById('ownerModal');
+    if (ownerModal) {
+        ownerModal.style.display = 'flex';
+        setTimeout(() => ownerModal.classList.add('visible'), 10);
+        renderOwnerItems();
+    }
+}
+
+function closeOwnerModalFunc() {
+    const ownerModal = document.getElementById('ownerModal');
+    if (ownerModal) {
+        ownerModal.classList.remove('visible');
+        setTimeout(() => ownerModal.style.display = 'none', 300);
+    }
+}
+
 function initOwnerGUI() {
     const ownerBtn = document.getElementById('secretOwnerBtn');
     const ownerModal = document.getElementById('ownerModal');
@@ -2856,6 +2926,12 @@ function initOwnerGUI() {
     const ownerItemsGrid = document.getElementById('ownerItemsGrid');
 
     if (!ownerBtn || !ownerModal) return;
+
+    // Check if owner mode was previously activated
+    if (localStorage.getItem('rng_isOwner') === 'true') {
+        isOwner = true;
+        ownerBtn.style.display = 'block';
+    }
 
     // Open modal
     ownerBtn.addEventListener('click', () => {
