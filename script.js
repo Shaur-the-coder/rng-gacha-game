@@ -213,6 +213,10 @@ const ITEMS = [
     { id: 148, name: "Reality Warper", emoji: "🌀", rarity: "legendary", gemValue: 750000 },
     { id: 149, name: "Omni Crown", emoji: "👑", rarity: "legendary", gemValue: 850000 },
     { id: 150, name: "Eternal Flame", emoji: "🔥", rarity: "legendary", gemValue: 950000 },
+    { id: 200, name: "Dragonheart Blade", emoji: "🗡️", rarity: "legendary", gemValue: 1200000 },
+    { id: 201, name: "Phoenix Wings", emoji: "🪶", rarity: "legendary", gemValue: 1100000 },
+    { id: 202, name: "Kraken's Eye", emoji: "👁️", rarity: "legendary", gemValue: 800000 },
+    { id: 203, name: "Medusa's Head", emoji: "🐍", rarity: "legendary", gemValue: 900000 },
 
     // ========================================
     // ANCIENT (5 items) - 1% chance - 2,000,000 gems, 50 coins
@@ -222,12 +226,19 @@ const ITEMS = [
     { id: 173, name: "Last Darkness", emoji: "🌑", rarity: "ancient" },
     { id: 174, name: "Time's Origin", emoji: "⌛", rarity: "ancient" },
     { id: 175, name: "Creation Seed", emoji: "🌱", rarity: "ancient" },
+    { id: 205, name: "Stonehenge Piece", emoji: "🗿", rarity: "ancient", gemValue: 2500000 },
+    { id: 206, name: "Pharaoh's Scepter", emoji: "🔱", rarity: "ancient", gemValue: 2200000 },
+    { id: 207, name: "Atlantis Key", emoji: "🔑", rarity: "ancient", gemValue: 2800000 },
+    { id: 208, name: "Mummy's Curse", emoji: "🩹", rarity: "ancient", gemValue: 2100000 },
 
     // ========================================
     // MYTHIC (2 items) - 0.1% chance - 10,000,000 gems, 100 coins
     // ========================================
     { id: 151, name: "Planetary Bread", emoji: "🍞", image: "planetary_bread.png", rarity: "mythic", gemValue: 10000000 },
     { id: 152, name: "Potatomobile", emoji: "🥔", image: "potatomobile.png", rarity: "mythic", gemValue: 10000000 },
+    { id: 210, name: "Cybernetic Heart", emoji: "🦾", rarity: "mythic", gemValue: 15000000 },
+    { id: 211, name: "Abyssal Pearl", emoji: "⚪", rarity: "mythic", gemValue: 12000000 },
+    { id: 212, name: "Solar Flare", emoji: "☀️", rarity: "mythic", gemValue: 18000000 },
 
     // ========================================
     // GODLY (3 items) - 0.01% chance - 100,000,000 gems, 500 coins
@@ -235,12 +246,18 @@ const ITEMS = [
     { id: 176, name: "Zeus's Thunderbolt", emoji: "⚡", rarity: "godly", gemValue: 100000000 },
     { id: 177, name: "Poseidon's Trident", emoji: "🔱", rarity: "godly", gemValue: 150000000 },
     { id: 178, name: "Hades's Bident", emoji: "🔥", rarity: "godly", gemValue: 200000000 },
+    { id: 214, name: "Odin's Spear", emoji: "🏹", rarity: "godly", gemValue: 250000000 },
+    { id: 215, name: "Amaterasu's Sun", emoji: "🏮", rarity: "godly", gemValue: 300000000 },
+    { id: 216, name: "Anubis's Scale", emoji: "⚖️", rarity: "godly", gemValue: 280000000 },
 
     // ========================================
     // CELESTIAL (2 items) - 0.001% chance - 1,000,000,000 gems, 1000 coins
     // ========================================
     { id: 179, name: "Big Bang Fragment", emoji: "💥", rarity: "celestial", gemValue: 1000000000 },
     { id: 180, name: "Universe Core", emoji: "🌌", rarity: "celestial", gemValue: 2000000000 },
+    { id: 218, name: "Supernova Soul", emoji: "💥", rarity: "celestial", gemValue: 3000000000 },
+    { id: 219, name: "Quasar Core", emoji: "🌀", rarity: "celestial", gemValue: 5000000000 },
+    { id: 220, name: "Multiverse Map", emoji: "🗺️", rarity: "celestial", gemValue: 10000000000 },
 
     // ========================================
     // SECRET (1 item) - Creator code only - Cannot be rolled
