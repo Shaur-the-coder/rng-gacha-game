@@ -4,7 +4,8 @@
 const WebSocket = require('ws');
 
 const PORT = 3001;
-const wss = new WebSocket.Server({ port: PORT });
+const HOST = '0.0.0.0'; // Bind to all interfaces for LAN access
+const wss = new WebSocket.Server({ port: PORT, host: HOST });
 
 // Store connected players (trading)
 const players = new Map();

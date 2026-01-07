@@ -477,7 +477,7 @@ function addChatMessage(sender, message, isSystem = false) {
 // ============================================
 
 function connectWebSocket() {
-    ws = new WebSocket('ws://localhost:3001');
+    ws = new WebSocket(`ws://${window.location.hostname}:3001`);
 
     ws.onopen = () => {
         connected = true;

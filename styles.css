@@ -23,17 +23,32 @@
     --uncommon-bg: rgba(34, 197, 94, 0.1);
     --rare: #3b82f6;
     --rare-bg: rgba(59, 130, 246, 0.1);
+    --superRare: #06b6d4;
+    --superRare-bg: rgba(6, 182, 212, 0.1);
     --epic: #a855f7;
     --epic-bg: rgba(168, 85, 247, 0.1);
+    --ultraRare: #ec4899;
+    --ultraRare-bg: rgba(236, 72, 153, 0.1);
     --legendary: #f59e0b;
     --legendary-bg: rgba(245, 158, 11, 0.1);
+    --ancient: #78350f;
+    --ancient-bg: rgba(120, 53, 15, 0.15);
     --mythic: #ef4444;
     --mythic-bg: rgba(239, 68, 68, 0.1);
+    --godly: #fbbf24;
+    --godly-bg: rgba(251, 191, 36, 0.15);
+    --celestial: #e0f2fe;
+    --celestial-bg: rgba(224, 242, 254, 0.15);
+    --secret: #000000;
+    --secret-bg: rgba(0, 0, 0, 0.3);
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --gradient-legendary: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #f59e0b 100%);
     --gradient-mythic: linear-gradient(135deg, #ef4444 0%, #dc2626 25%, #b91c1c 50%, #dc2626 75%, #ef4444 100%);
+    --gradient-godly: linear-gradient(135deg, #fbbf24 0%, #f59e0b 25%, #fbbf24 50%, #f59e0b 75%, #fbbf24 100%);
+    --gradient-celestial: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 25%, #7dd3fc 50%, #bae6fd 75%, #e0f2fe 100%);
+    --gradient-secret: linear-gradient(135deg, #1a1a1a 0%, #000000 50%, #1a1a1a 100%);
 
     /* Effects */
     --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.3);
@@ -711,6 +726,211 @@ body::before {
     }
 }
 
+/* Super Rare Styling */
+.rarity-superRare .item-card {
+    border-color: var(--superRare);
+    animation: superRarePulse 2s ease-in-out infinite;
+}
+
+.rarity-superRare .item-image {
+    border-color: var(--superRare);
+    background: var(--superRare-bg);
+}
+
+.rarity-superRare .item-rarity {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    color: #fff;
+}
+
+@keyframes superRarePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+    }
+}
+
+/* Ultra Rare Styling */
+.rarity-ultraRare .item-card {
+    border-color: var(--ultraRare);
+    animation: ultraRarePulse 1.8s ease-in-out infinite;
+}
+
+.rarity-ultraRare .item-image {
+    border-color: var(--ultraRare);
+    background: var(--ultraRare-bg);
+}
+
+.rarity-ultraRare .item-rarity {
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+    color: #fff;
+}
+
+@keyframes ultraRarePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(236, 72, 153, 0.6);
+    }
+}
+
+/* Ancient Styling */
+.rarity-ancient .item-card {
+    border-color: var(--ancient);
+    animation: ancientPulse 3s ease-in-out infinite;
+    background: linear-gradient(145deg, rgba(120, 53, 15, 0.2) 0%, transparent 100%);
+}
+
+.rarity-ancient .item-image {
+    border-color: var(--ancient);
+    background: var(--ancient-bg);
+}
+
+.rarity-ancient .item-rarity {
+    background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
+    color: #fbbf24;
+}
+
+@keyframes ancientPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 25px rgba(120, 53, 15, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 50px rgba(120, 53, 15, 0.7);
+    }
+}
+
+/* Godly Styling */
+.rarity-godly .item-card {
+    border-color: var(--godly);
+    animation: godlyPulse 1.5s ease-in-out infinite, godlyShine 3s linear infinite;
+    border-width: 3px;
+}
+
+.rarity-godly .item-image {
+    border-color: var(--godly);
+    background: var(--godly-bg);
+}
+
+.rarity-godly .item-rarity {
+    background: var(--gradient-godly);
+    color: #000;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
+}
+
+@keyframes godlyPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 60px rgba(251, 191, 36, 0.9);
+    }
+}
+
+@keyframes godlyShine {
+    0% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.2);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+/* Celestial Styling */
+.rarity-celestial .item-card {
+    border-color: var(--celestial);
+    animation: celestialPulse 2s ease-in-out infinite, celestialGlow 4s linear infinite;
+    border-width: 4px;
+    background: linear-gradient(145deg, rgba(224, 242, 254, 0.1) 0%, transparent 100%);
+}
+
+.rarity-celestial .item-image {
+    border-color: var(--celestial);
+    background: var(--celestial-bg);
+}
+
+.rarity-celestial .item-rarity {
+    background: var(--gradient-celestial);
+    color: #0c4a6e;
+    font-weight: 800;
+}
+
+@keyframes celestialPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 40px rgba(224, 242, 254, 0.6);
+    }
+
+    50% {
+        box-shadow: 0 0 80px rgba(186, 230, 253, 0.9);
+    }
+}
+
+@keyframes celestialGlow {
+
+    0%,
+    100% {
+        filter: hue-rotate(0deg) brightness(1);
+    }
+
+    50% {
+        filter: hue-rotate(15deg) brightness(1.15);
+    }
+}
+
+/* Secret Styling */
+.rarity-secret .item-card {
+    border-color: var(--secret);
+    animation: secretPulse 2s ease-in-out infinite;
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.5) 0%, rgba(30, 30, 30, 0.3) 100%);
+    border-width: 3px;
+}
+
+.rarity-secret .item-image {
+    border-color: var(--secret);
+    background: var(--secret-bg);
+}
+
+.rarity-secret .item-rarity {
+    background: var(--gradient-secret);
+    color: #ef4444;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+@keyframes secretPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 30px rgba(239, 68, 68, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 60px rgba(239, 68, 68, 0.5), inset 0 0 40px rgba(0, 0, 0, 0.7);
+    }
+}
+
 /* ============================================
    RARITY HOVER VFX
    ============================================ */
@@ -1319,6 +1539,29 @@ body::before {
     box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
 }
 
+.inventory-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.sell-all-btn {
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sell-all-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
+}
+
 .inventory-hint {
     text-align: center;
     color: var(--text-secondary);
@@ -1707,6 +1950,37 @@ body::before {
     border: 1px solid var(--glass-border);
     border-radius: 50px;
     display: inline-flex;
+}
+
+/* Floating sticky currency bar */
+.floating-currency-bar {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(15, 15, 25, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    z-index: 1001;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+.floating-currency-bar .currency {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.floating-currency-bar .currency-icon {
+    font-size: 1.2rem;
+}
+
+.floating-currency-bar .currency-value {
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .currency {
@@ -4489,5 +4763,158 @@ body::before {
 
     .htp-sections {
         grid-template-columns: 1fr;
+    }
+}
+
+/* New Rarity Tags */
+.rarity-tag.superRare {
+    background: rgba(6, 182, 212, 0.3);
+    color: #06b6d4;
+}
+
+.rarity-tag.ultraRare {
+    background: rgba(236, 72, 153, 0.3);
+    color: #ec4899;
+}
+
+.rarity-tag.ancient {
+    background: rgba(120, 53, 15, 0.4);
+    color: #fbbf24;
+}
+
+.rarity-tag.godly {
+    background: rgba(251, 191, 36, 0.4);
+    color: #fbbf24;
+    animation: shimmer 2s linear infinite;
+}
+
+.rarity-tag.celestial {
+    background: rgba(224, 242, 254, 0.4);
+    color: #0c4a6e;
+    animation: celestialShimmer 3s linear infinite;
+}
+
+.rarity-tag.secret {
+    background: rgba(0, 0, 0, 0.6);
+    color: #ef4444;
+    font-weight: 800;
+}
+
+/* Variant Item Styling */
+.variant-shiny {
+    animation: shinyShimmer 2s linear infinite !important;
+}
+
+.variant-holographic {
+    animation: holoShimmer 3s linear infinite !important;
+    background: linear-gradient(135deg,
+            rgba(255, 0, 0, 0.1) 0%,
+            rgba(255, 165, 0, 0.1) 15%,
+            rgba(255, 255, 0, 0.1) 30%,
+            rgba(0, 255, 0, 0.1) 45%,
+            rgba(0, 0, 255, 0.1) 60%,
+            rgba(75, 0, 130, 0.1) 75%,
+            rgba(238, 130, 238, 0.1) 90%,
+            rgba(255, 0, 0, 0.1) 100%) !important;
+}
+
+.variant-cursed {
+    filter: sepia(0.3) saturate(1.5) hue-rotate(-10deg) !important;
+    box-shadow: 0 0 15px rgba(128, 0, 128, 0.5) !important;
+}
+
+.variant-blessed {
+    filter: brightness(1.2) saturate(1.3) !important;
+    box-shadow: 0 0 20px rgba(255, 255, 200, 0.5) !important;
+}
+
+.variant-glitched {
+    animation: glitchEffect 0.5s linear infinite !important;
+}
+
+.variant-corrupted {
+    filter: saturate(1.5) contrast(1.2) !important;
+    box-shadow: 0 0 15px rgba(100, 0, 100, 0.6) !important;
+}
+
+.variant-pristine {
+    filter: brightness(1.15) saturate(1.2) !important;
+    border-color: #67e8f9 !important;
+}
+
+.variant-prototype {
+    opacity: 0.9;
+    border-style: dashed !important;
+}
+
+@keyframes shinyShimmer {
+
+    0%,
+    100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.3);
+    }
+}
+
+@keyframes holoShimmer {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes glitchEffect {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 1px);
+    }
+
+    40% {
+        transform: translate(2px, -1px);
+    }
+
+    60% {
+        transform: translate(-1px, 2px);
+    }
+
+    80% {
+        transform: translate(1px, -2px);
+    }
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes celestialShimmer {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(224, 242, 254, 0.5);
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(186, 230, 253, 0.8);
+        opacity: 0.9;
     }
 }

@@ -193,28 +193,104 @@ const ITEMS = [
     // ========================================
     { id: 151, name: "Planetary Bread", emoji: "🍞", image: "planetary_bread.png", rarity: "mythic", gemValue: 10000000 },
     { id: 152, name: "Potatomobile", emoji: "🥔", image: "potatomobile.png", rarity: "mythic", gemValue: 10000000 },
+
+    // ========================================
+    // SUPER RARE (10 items) - 10% chance - 10,000 gems, 8 coins
+    // ========================================
+    { id: 153, name: "Starfall Blade", emoji: "🌠", rarity: "superRare" },
+    { id: 154, name: "Ocean Heart", emoji: "🌊", rarity: "superRare" },
+    { id: 155, name: "Storm Caller", emoji: "⛈️", rarity: "superRare" },
+    { id: 156, name: "Earth Shaker", emoji: "🌋", rarity: "superRare" },
+    { id: 157, name: "Wind Walker", emoji: "🌬️", rarity: "superRare" },
+    { id: 158, name: "Flame Dancer", emoji: "💃", rarity: "superRare" },
+    { id: 159, name: "Ice Weaver", emoji: "🧊", rarity: "superRare" },
+    { id: 160, name: "Shadow Step", emoji: "🦶", rarity: "superRare" },
+    { id: 161, name: "Light Bringer", emoji: "💡", rarity: "superRare" },
+    { id: 162, name: "Void Touched", emoji: "🕳️", rarity: "superRare" },
+
+    // ========================================
+    // ULTRA RARE (8 items) - 5% chance - 250,000 gems, 15 coins
+    // ========================================
+    { id: 163, name: "Dragonfire Orb", emoji: "🐲", rarity: "ultraRare" },
+    { id: 164, name: "Titan's Fist", emoji: "👊", rarity: "ultraRare" },
+    { id: 165, name: "Seraph Wings", emoji: "🪽", rarity: "ultraRare" },
+    { id: 166, name: "Necromancer Tome", emoji: "📓", rarity: "ultraRare" },
+    { id: 167, name: "Valkyrie Helm", emoji: "🪖", rarity: "ultraRare" },
+    { id: 168, name: "Samurai Spirit", emoji: "⛩️", rarity: "ultraRare" },
+    { id: 169, name: "Viking Rune", emoji: "ᚱ", rarity: "ultraRare" },
+    { id: 170, name: "Pharaoh's Curse", emoji: "🏺", rarity: "ultraRare" },
+
+    // ========================================
+    // ANCIENT (5 items) - 1% chance - 2,000,000 gems, 50 coins
+    // ========================================
+    { id: 171, name: "Primordial Egg", emoji: "🥚", rarity: "ancient" },
+    { id: 172, name: "First Light", emoji: "🌅", rarity: "ancient" },
+    { id: 173, name: "Last Darkness", emoji: "🌑", rarity: "ancient" },
+    { id: 174, name: "Time's Origin", emoji: "⌛", rarity: "ancient" },
+    { id: 175, name: "Creation Seed", emoji: "🌱", rarity: "ancient" },
+
+    // ========================================
+    // GODLY (3 items) - 0.01% chance - 100,000,000 gems, 500 coins
+    // ========================================
+    { id: 176, name: "Zeus's Thunderbolt", emoji: "⚡", rarity: "godly", gemValue: 100000000 },
+    { id: 177, name: "Poseidon's Trident", emoji: "🔱", rarity: "godly", gemValue: 150000000 },
+    { id: 178, name: "Hades's Bident", emoji: "🔥", rarity: "godly", gemValue: 200000000 },
+
+    // ========================================
+    // CELESTIAL (2 items) - 0.001% chance - 1,000,000,000 gems, 1000 coins
+    // ========================================
+    { id: 179, name: "Big Bang Fragment", emoji: "💥", rarity: "celestial", gemValue: 1000000000 },
+    { id: 180, name: "Universe Core", emoji: "🌌", rarity: "celestial", gemValue: 2000000000 },
+
+    // ========================================
+    // SECRET (1 item) - Creator code only - Cannot be rolled
+    // ========================================
+    { id: 181, name: "Evil Sigma", emoji: "😈", image: "evil_sigma.png", rarity: "secret", gemValue: 999999999 },
 ];
 
-const TOTAL_ITEMS = ITEMS.length; // 152
+const TOTAL_ITEMS = ITEMS.length;
 
-// Rarity configuration
+// Rarity configuration - EXPANDED with new tiers
 const RARITY_CONFIG = {
-    common: { weight: 49.9, gems: 10, coins: 1 },
-    uncommon: { weight: 25, gems: 100, coins: 2 },
-    rare: { weight: 15, gems: 1000, coins: 5 },
-    epic: { weight: 7, gems: 100000, coins: 10 },
-    legendary: { weight: 3, gems: 500000, coins: 25 },
-    mythic: { weight: 0.1, gems: 10000000, coins: 100 }
+    common: { weight: 40, gems: 10, coins: 1, color: '#9ca3af' },
+    uncommon: { weight: 20, gems: 100, coins: 2, color: '#22c55e' },
+    rare: { weight: 12, gems: 1000, coins: 5, color: '#3b82f6' },
+    superRare: { weight: 10, gems: 10000, coins: 8, color: '#06b6d4' },
+    epic: { weight: 7, gems: 100000, coins: 10, color: '#a855f7' },
+    ultraRare: { weight: 5, gems: 250000, coins: 15, color: '#ec4899' },
+    legendary: { weight: 3, gems: 500000, coins: 25, color: '#f59e0b' },
+    ancient: { weight: 1, gems: 2000000, coins: 50, color: '#78350f' },
+    mythic: { weight: 0.1, gems: 10000000, coins: 100, color: '#ef4444' },
+    godly: { weight: 0.01, gems: 100000000, coins: 500, color: '#fbbf24' },
+    celestial: { weight: 0.001, gems: 1000000000, coins: 1000, color: '#e0f2fe' },
+    secret: { weight: 0, gems: 999999999, coins: 9999, color: '#000000' } // Only via code
+};
+
+// Variant system - applies to any item
+const VARIANT_CONFIG = {
+    shiny: { chance: 0.01, multiplier: 10, prefix: '✨ Shiny' },
+    holographic: { chance: 0.001, multiplier: 50, prefix: '🌈 Holographic' },
+    cursed: { chance: 0.005, multiplier: 5, prefix: '💀 Cursed', effect: 'cursed' },
+    blessed: { chance: 0.005, multiplier: 3, prefix: '😇 Blessed', effect: 'blessed' },
+    glitched: { chance: 0.002, multiplier: 20, prefix: '🔧 Glitched' },
+    corrupted: { chance: 0.003, multiplier: 8, prefix: '👿 Corrupted' },
+    pristine: { chance: 0.008, multiplier: 4, prefix: '💎 Pristine' },
+    prototype: { chance: 0.004, multiplier: 6, prefix: '🔬 Prototype' }
 };
 
 // Lucky roll weights (better odds)
 const LUCKY_RARITY_CONFIG = {
-    common: { weight: 29.5 },
-    uncommon: { weight: 30 },
-    rare: { weight: 25 },
-    epic: { weight: 10 },
+    common: { weight: 20 },
+    uncommon: { weight: 20 },
+    rare: { weight: 18 },
+    superRare: { weight: 15 },
+    epic: { weight: 12 },
+    ultraRare: { weight: 8 },
     legendary: { weight: 5 },
-    mythic: { weight: 0.5 }
+    ancient: { weight: 1.5 },
+    mythic: { weight: 0.4 },
+    godly: { weight: 0.08 },
+    celestial: { weight: 0.02 }
 };
 
 // Boost configuration
@@ -230,6 +306,7 @@ const CREATOR_CODES = {
     'HACKS': { coins: 0, gems: 0, items: [{ id: 151, count: 10 }], description: '10x Planetary Bread!' },
     'POTATOHEAVEN': { coins: 0, gems: 0, items: [{ id: 152, count: 10 }], description: '10x Potatomobile!' },
     'GOD4919': { coins: 1000000, gems: 100000000000, description: 'God mode activated!' },
+    'EVILSIGMA': { coins: 0, gems: 0, items: [{ id: 181, count: 1 }], description: '😈 SECRET: Evil Sigma unlocked!' },
 };
 
 // Shop items configuration
@@ -437,6 +514,13 @@ function startGame() {
     displayUsername.textContent = username;
     updateStats();
     updateCurrencyDisplay();
+
+    // Force sync floating bar
+    const floatingGems = document.getElementById('floatingGems');
+    const floatingCoins = document.getElementById('floatingCoins');
+    if (floatingGems) floatingGems.textContent = formatNumber(gems);
+    if (floatingCoins) floatingCoins.textContent = formatNumber(coins);
+
     renderInventory();
     updateBoostStatus();
 
@@ -509,13 +593,22 @@ function startGame() {
 
 // Get gem value for item
 function getGemValue(item) {
-    if (item.gemValue) return item.gemValue;
-    return RARITY_CONFIG[item.rarity].gems;
+    let baseValue = item.gemValue || RARITY_CONFIG[item.rarity]?.gems || 10;
+    // Apply variant multiplier if present
+    if (item.variantMultiplier) {
+        baseValue = Math.floor(baseValue * item.variantMultiplier);
+    }
+    return baseValue;
 }
 
 // Get coin value for item
 function getCoinValue(item) {
-    return RARITY_CONFIG[item.rarity].coins;
+    let baseValue = RARITY_CONFIG[item.rarity]?.coins || 1;
+    // Apply variant multiplier if present
+    if (item.variantMultiplier) {
+        baseValue = Math.floor(baseValue * item.variantMultiplier);
+    }
+    return baseValue;
 }
 
 // Check if luck boost is active
@@ -554,12 +647,33 @@ function getRandomItem(isLucky = false) {
     // If mythic luck is active, ALWAYS return mythic
     if (isMythicLuckActive()) {
         const mythicItems = ITEMS.filter(item => item.rarity === 'mythic');
-        return mythicItems[Math.floor(Math.random() * mythicItems.length)];
+        let item = { ...mythicItems[Math.floor(Math.random() * mythicItems.length)] };
+        return applyVariant(item);
     }
 
     const rarity = getRandomRarity(isLucky);
-    const itemsOfRarity = ITEMS.filter(item => item.rarity === rarity);
-    return itemsOfRarity[Math.floor(Math.random() * itemsOfRarity.length)];
+    const itemsOfRarity = ITEMS.filter(item => item.rarity === rarity && item.rarity !== 'secret');
+    let item = { ...itemsOfRarity[Math.floor(Math.random() * itemsOfRarity.length)] };
+    return applyVariant(item);
+}
+
+// Apply random variant to item
+function applyVariant(item) {
+    // Check each variant type
+    for (const [variantName, variantData] of Object.entries(VARIANT_CONFIG)) {
+        if (Math.random() < variantData.chance) {
+            item.variant = variantName;
+            item.variantPrefix = variantData.prefix;
+            item.variantMultiplier = variantData.multiplier;
+            item.originalName = item.name;
+            item.name = `${variantData.prefix} ${item.name}`;
+            if (variantData.effect) {
+                item.variantEffect = variantData.effect;
+            }
+            break; // Only one variant per item
+        }
+    }
+    return item;
 }
 
 // Roll animation
@@ -599,12 +713,13 @@ async function roll(isLucky = false) {
         glowClass = 'mythic-glow-buildup';
     }
 
-    // Clear previous result styling
+    // Clear previous result styling and glow
     rollFrame.className = 'roll-frame rolling';
     if (glowClass) {
         rollFrame.classList.add(glowClass);
     }
     rollGlow.style.opacity = '0';
+    rollGlow.style.boxShadow = 'none';
 
     // Show card back during roll
     resultImage.classList.add('card-back');
@@ -738,6 +853,12 @@ function updateStats() {
 function updateCurrencyDisplay() {
     gemsDisplay.textContent = formatNumber(gems);
     coinsDisplay.textContent = formatNumber(coins);
+
+    // Update floating sticky bar
+    const floatingGems = document.getElementById('floatingGems');
+    const floatingCoins = document.getElementById('floatingCoins');
+    if (floatingGems) floatingGems.textContent = formatNumber(gems);
+    if (floatingCoins) floatingCoins.textContent = formatNumber(coins);
 }
 
 // Update boost status
@@ -1117,6 +1238,49 @@ function executeBulkSell() {
     closeBulkSellModal();
 }
 
+// Sell All Items
+function sellAllItems() {
+    const itemCount = Object.keys(inventory).length;
+    if (itemCount === 0) {
+        alert('No items to sell!');
+        return;
+    }
+
+    // Calculate total value
+    let totalGems = 0;
+    let totalCoins = 0;
+    let totalItems = 0;
+
+    Object.values(inventory).forEach(item => {
+        totalGems += getGemValue(item) * item.count;
+        totalCoins += getCoinValue(item) * item.count;
+        totalItems += item.count;
+    });
+
+    // Apply Coin Magnet bonus
+    totalCoins = applyCoinMagnetBonus(totalCoins);
+
+    // Confirm with user
+    const confirmed = confirm(`Sell ALL ${totalItems} items for:\n${formatNumber(totalGems)} 💎\n${totalCoins.toLocaleString()} 🪙\n\nAre you sure?`);
+
+    if (!confirmed) return;
+
+    // Add currency
+    gems += totalGems;
+    coins += totalCoins;
+
+    // Clear inventory
+    inventory = {};
+
+    // Update UI
+    updateCurrencyDisplay();
+    updateStats();
+    renderInventory(document.querySelector('.filter-btn.active').dataset.rarity);
+    saveToStorage();
+
+    alert(`Sold ${totalItems} items for ${formatNumber(totalGems)} 💎 + ${totalCoins.toLocaleString()} 🪙!`);
+}
+
 // Event listeners
 if (openBulkSellBtn) {
     openBulkSellBtn.addEventListener('click', openBulkSellModal);
@@ -1126,6 +1290,12 @@ if (closeBulkSellBtn) {
 }
 if (confirmBulkSellBtn) {
     confirmBulkSellBtn.addEventListener('click', executeBulkSell);
+}
+
+// Sell All button
+const sellAllBtn = document.getElementById('sellAllBtn');
+if (sellAllBtn) {
+    sellAllBtn.addEventListener('click', sellAllItems);
 }
 
 // Redeem creator code
@@ -1742,8 +1912,8 @@ function submitUsername() {
 // Trading System Functions
 // ============================================
 
-// WebSocket server URL
-const TRADE_SERVER_URL = 'ws://localhost:3001';
+// WebSocket server URL - use current hostname for LAN support
+const TRADE_SERVER_URL = `ws://${window.location.hostname}:3001`;
 let wsReconnectTimeout = null;
 let wsConnected = false;
 
@@ -2425,6 +2595,7 @@ async function performRollWithItem(result) {
     rollFrame.className = 'roll-frame rolling';
     if (glowClass) rollFrame.classList.add(glowClass);
     rollGlow.style.opacity = '0';
+    rollGlow.style.boxShadow = 'none';
 
     resultImage.classList.add('card-back');
     resultImage.innerHTML = '<div class="card-back-placeholder">?</div>';
@@ -2607,6 +2778,14 @@ init();
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(initGemShop, 100);
     initHowToPlay();
+
+    // Sync floating currency bar on load
+    setTimeout(() => {
+        const floatingGems = document.getElementById('floatingGems');
+        const floatingCoins = document.getElementById('floatingCoins');
+        if (floatingGems) floatingGems.textContent = formatNumber(gems);
+        if (floatingCoins) floatingCoins.textContent = formatNumber(coins);
+    }, 500);
 });
 
 // Initialize How to Play modal
