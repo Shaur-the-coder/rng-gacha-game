@@ -7,7 +7,7 @@
     <title>RNG Gacha Game</title>
     <meta name="description" content="Roll for rare items in this exciting RNG gacha game!">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="styles.css?v=58">
+    <link rel="stylesheet" href="styles.css?v=61">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
@@ -572,51 +572,59 @@
 
             <div class="htp-sections">
                 <div class="htp-section">
-                    <h3>🎰 Rolling</h3>
+                    <h3>🎰 Rolling & Luck</h3>
                     <ul>
                         <li><strong>Roll</strong> - Free roll to get random items</li>
-                        <li><strong>Lucky Roll</strong> - Costs 50 🪙, better odds!</li>
-                        <li>Rarer items = More gems when sold</li>
+                        <li><strong>Lucky Roll</strong> - Costs 50 🪙, much better odds!</li>
+                        <li><strong>Luck Stacking</strong> - Luck from Totems, Upgrades, and Events all stack together!
+                        </li>
                     </ul>
                 </div>
 
                 <div class="htp-section">
-                    <h3>💎 Rarities</h3>
+                    <h3>💎 Rarity Tier List</h3>
+                    <div class="htp-rarity-grid">
+                        <div class="rarity-item"><span class="rarity-tag common">Common</span> (40%)</div>
+                        <div class="rarity-item"><span class="rarity-tag uncommon">Uncommon</span> (20%)</div>
+                        <div class="rarity-item"><span class="rarity-tag rare">Rare</span> (15%)</div>
+                        <div class="rarity-item"><span class="rarity-tag superRare">Super Rare</span> (10%)</div>
+                        <div class="rarity-item"><span class="rarity-tag epic">Epic</span> (7%)</div>
+                        <div class="rarity-item"><span class="rarity-tag ultraRare">Ultra Rare</span> (5%)</div>
+                        <div class="rarity-item"><span class="rarity-tag legendary">Legendary</span> (3%)</div>
+                        <div class="rarity-item"><span class="rarity-tag ancient">Ancient</span> (1%)</div>
+                        <div class="rarity-item"><span class="rarity-tag mythic">Mythic</span> (0.1%)</div>
+                        <div class="rarity-item"><span class="rarity-tag godly">Godly</span> (0.01%)</div>
+                        <div class="rarity-item"><span class="rarity-tag celestial">Celestial</span> (0.001%)</div>
+                        <div class="rarity-item"><span class="rarity-tag secret">Secret</span> (???)</div>
+                    </div>
+                </div>
+
+                <div class="htp-section">
+                    <h3>✨ Item Variants</h3>
                     <ul>
-                        <li><span class="rarity-tag common">Common</span> - 50% chance, 10 💎</li>
-                        <li><span class="rarity-tag uncommon">Uncommon</span> - 25% chance, 100 💎</li>
-                        <li><span class="rarity-tag rare">Rare</span> - 15% chance, 1K 💎</li>
-                        <li><span class="rarity-tag epic">Epic</span> - 7% chance, 100K 💎</li>
-                        <li><span class="rarity-tag legendary">Legendary</span> - 3% chance, 500K+ 💎</li>
-                        <li><span class="rarity-tag mythic">Mythic</span> - 0.1% chance, 10M 💎</li>
+                        <li><strong>Shiny</strong> - 2x Value, rare visual effect</li>
+                        <li><strong>Cursed</strong> - 0.5x Value, dark aura</li>
+                        <li><strong>Holographic</strong> - 5x Value, rainbow glow</li>
+                        <li><strong>Pristine</strong> - 10x Value, cyan border</li>
+                        <li><strong>Corrupted</strong> - 3x Value, unstable effect</li>
                     </ul>
                 </div>
 
                 <div class="htp-section">
                     <h3>💰 Economy</h3>
                     <ul>
-                        <li><strong>💎 Gems</strong> - Get from selling items, use in Gem Shop</li>
-                        <li><strong>🪙 Coins</strong> - Get from selling, use for boosts</li>
-                        <li><strong>Gem Shop</strong> - Exchange gems, guaranteed rolls, upgrades</li>
+                        <li><strong>💎 Gems</strong> - Main currency from selling, used in Shops</li>
+                        <li><strong>🪙 Coins</strong> - Earned from sales, used for Rolls and Boosts</li>
+                        <li><strong>🏪 Gem Shop</strong> - Buy Permanent Upgrades and Guaranteed Rolls</li>
+                        <li><strong>🗿 Totems</strong> - Buy in shops for permanent luck bonuses</li>
                     </ul>
                 </div>
 
                 <div class="htp-section">
-                    <h3>⚡ Boosts & Features</h3>
+                    <h3>🎁 Extras</h3>
                     <ul>
-                        <li><strong>Luck Boost</strong> - 50 🪙 for 10min better odds</li>
-                        <li><strong>Auto Roll</strong> - 450 🪙 for automatic rolling</li>
-                        <li><strong>Totems</strong> - Buy with gems for luck boosts</li>
-                        <li><strong>Auto-Sell</strong> - Automatically sell unwanted rarities</li>
-                    </ul>
-                </div>
-
-                <div class="htp-section">
-                    <h3>🌍 Multiplayer</h3>
-                    <ul>
-                        <li><strong>Trading</strong> - Trade items with online players</li>
-                        <li><strong>3D World</strong> - Explore with WASD, chat with others</li>
-                        <li><strong>Global Events</strong> - Trigger Mythic Luck for everyone!</li>
+                        <li><strong>Events</strong> - Look out for aura events that boost everyone</li>
+                        <li><strong>Codes</strong> - Find secret creator codes for free rewards!</li>
                     </ul>
                 </div>
             </div>
@@ -646,14 +654,10 @@
         </div>
     </div>
 
-    <!-- Multiplayer Button -->
-    <a href="multiplayer.html" class="multiplayer-btn" id="multiplayerBtn" target="_blank">
-        <span class="mp-icon">🌍</span>
-        <span class="mp-text">Multiplayer</span>
-    </a>
+
 
     <script src="vfx.js?v=1"></script>
-    <script src="script.js?v=58"></script>
+    <script src="script.js?v=60"></script>
 </body>
 
 </html>

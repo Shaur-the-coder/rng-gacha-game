@@ -2878,20 +2878,24 @@ function initHowToPlay() {
     if (howToPlayBtn && howToPlayModal) {
         howToPlayBtn.addEventListener('click', () => {
             howToPlayModal.style.display = 'flex';
+            setTimeout(() => howToPlayModal.classList.add('visible'), 10);
         });
 
         closeHowToPlay?.addEventListener('click', () => {
-            howToPlayModal.style.display = 'none';
+            howToPlayModal.classList.remove('visible');
+            setTimeout(() => howToPlayModal.style.display = 'none', 300);
         });
 
         closeHowToPlayBtn?.addEventListener('click', () => {
-            howToPlayModal.style.display = 'none';
+            howToPlayModal.classList.remove('visible');
+            setTimeout(() => howToPlayModal.style.display = 'none', 300);
         });
 
         // Close on overlay click
         howToPlayModal.addEventListener('click', (e) => {
             if (e.target === howToPlayModal) {
-                howToPlayModal.style.display = 'none';
+                howToPlayModal.classList.remove('visible');
+                setTimeout(() => howToPlayModal.style.display = 'none', 300);
             }
         });
     }
